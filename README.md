@@ -2,7 +2,7 @@
 
 A customizable data catalog for users of the EDI Data Repository
 
-[Live demo](https://rmcnellis.github.io/ezCatalog/public/demo.html)
+[Live demo](https://rmcnellis.github.io/ezCatalog_PIE/public/demo.html)
 
 _ezCatalog is based on the [PASTA-JavaScript-Search-Client](https://github.com/BLE-LTER/PASTA-JavaScript-Search-Client) developed by Tim Whiteaker for the Long-Term Ecological Research Network (LTER)._
 
