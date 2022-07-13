@@ -22,7 +22,7 @@ Researchers and organizations publishing data in the [EDI Repository](https://po
 5. Enable GitHub Actions to build your catalog with the [build_catalog](https://github.com/rmcnellis/ezCatalog/blob/master/.github/workflows/build_catalog.yml) workflow. Go to **Actions** and enable. Under **Workflows** select **Build catalog**, then **Run workflow**. Wait for the workflow to complete, then click the **Live demo** page to see your catalog (it may take a few minutes to update). Subsequent pushes to your fork will automatically rerun the `build_catalog` workflow.  
 6. Copy the HTML snippet below and paste it into the body of your webpage. This will reference the catalog hosted on GitHub Pages from within your website.
 ```
-<iframe loading="lazy" src="https://rmcnellis.github.io/ezCatalog_PIE/public/demo.html" scrolling="no" allow="fullscreen" width="100%" height="2700px"></iframe>
+<iframe loading="lazy" src="https://PIE-LTER.github.io/ezCatalog_PIE/public/demo.html" scrolling="no" allow="fullscreen" width="100%" height="2700px"></iframe>
 ```
 
 View the page source code of the [Jornada Basin LTER Data Catalog](https://lter.jornada.nmsu.edu/data-catalog/) for an example of embedding an <iframe> in a webpage or experiment using the W3Schools [HTML Tryit editor](https://www.w3schools.com/html/tryit.asp?filename=tryhtml_intro).
