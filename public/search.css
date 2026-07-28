@@ -208,14 +208,14 @@ body {
 .results {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2em;
+  gap: 1em;
 }
 
 .result-item {
   background: var(--secondary-color);
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
-  padding: 1.5em;
+  padding: 1em;
   display: flex;
   flex-direction: column;
   gap: 1em;
@@ -257,7 +257,7 @@ body {
   margin-bottom: 8px;
 }
 .dataset-title a {
-  font-size: 1.2em;
+  font-size: 1em;
   text-decoration: none;
   color: var(--dataset-title-link-color);
 }
@@ -284,8 +284,8 @@ body {
   flex: 1;
 }
 .dataset-thumb-container {
-  width: 500px;
-  height: 180px;
+  width: 1px;
+  height: 1px;
   display: flex;
   align-items: center;
   justify-content: center;
