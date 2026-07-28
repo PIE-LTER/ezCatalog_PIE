@@ -45,7 +45,9 @@ const PASTA_CONFIG = {
    "showThumbnails": false, // If false, do not display dataset thumbnail images
    "showBanner": false, // If false, the top banner will not be displayed
    "hideMapView": false, // true to hide the map view
-   "showPages": true,
+   "pagesTopElementId": "paginationTop", // Element to display result page links above results
+   "pagesBotElementId": "paginationBot", // Element to display result page links below results
+   "showPages": 5, // MUST BE ODD NUMBER! Max number of page links to show
    "facetVisibility": { // Facet visibility toggles
       "creator": true,
       "keyword": true,
