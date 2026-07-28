@@ -45,6 +45,7 @@ const PASTA_CONFIG = {
    "showThumbnails": false, // If false, do not display dataset thumbnail images
    "showBanner": false, // If false, the top banner will not be displayed
    "hideMapView": false, // true to hide the map view
+   "showPages": true,
    "facetVisibility": { // Facet visibility toggles
       "creator": true,
       "keyword": true,
