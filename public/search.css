@@ -11,13 +11,13 @@
   --accent-color: #e94e77;
   --background-color: #ffffff;
   --font-family: 'Open Sans', 'Segoe UI', Arial, sans-serif;
-  --font-size-base: 12px;
+  --font-size-base: 16px;
   --border-radius: 6px;
   --box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   --input-padding: 0.5em 1em;
   --transition-speed: 0.2s;
   --dataset-title-color: #000000;
-  --dataset-title-font-size: 14px;
+  --dataset-title-font-size: 20px;
   --dataset-title-font-weight: bold;
   --dataset-title-link-color: #0046AD;
   --dataset-title-link-visited: #4C2C92;
