@@ -39,7 +39,7 @@ const PASTA_CONFIG = {
    "filter": '&fq=scope:knb-lter-pie', // Filter results on a unique keyword of a research group
    "brandingText": "PIE LTER Data Catalog",
    "logoAltText": "PIE LTER Logo.", //
-   "showAbstracts": true, // true if we should show abstracts in search results
+   "showAbstracts": false, // true if we should show abstracts in search results
    "abstractLimit": 750, // Limit the number of characters in the abstract
    "showUserStoriesLink": true, // If false, do not display the user stories link for datasets
    "showThumbnails": false, // If false, do not display dataset thumbnail images
@@ -56,7 +56,7 @@ const PASTA_CONFIG = {
    // Internal use only ---------------------------------------------------------------------------------------------
    "server": "https://pasta.lternet.edu/package/search/eml?", // PASTA server
    "countElementId": "resultCount", // Element showing number of results
-   "limit": 2000,  // Max number of results to retrieve per page
+   "limit": 20,  // Max number of results to retrieve per page
    "resultsElementId": "searchResults", // Element to contain results
    // Centralized element IDs
    "loadingDivId": "loading-div",
