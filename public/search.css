@@ -283,41 +283,6 @@ body {
 .dataset-info {
   flex: 1;
 }
-.dataset-thumb-container {
-  width: 320px;
-  height: 180px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: 18px;
-  background: var(--background-color); /* Match catalog background */
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-}
-.dataset-thumb-container.no-image {
-  background: var(--background-color) !important;
-  box-shadow: none !important;
-  border-radius: 0 !important;
-}
-.dataset-thumb {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  aspect-ratio: 16/9;
-  border-radius: 6px;
-  background: #eee;
-}
-.dataset-thumb-container .dataset-thumb {
-  cursor: pointer;
-}
-@media (max-width: 600px) {
-  .dataset-thumb-container {
-    width: 160px;
-    height: 90px;
-    margin-left: 10px;
-  }
-}
 
 /* --- Banner --- */
 .banner-bar {
