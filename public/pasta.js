@@ -39,11 +39,11 @@ const PASTA_CONFIG = {
    "filter": '&fq=scope:knb-lter-pie', // Filter results on a unique keyword of a research group
    "brandingText": "PIE LTER Data Catalog",
    "logoAltText": "PIE LTER Logo.", //
-   "showAbstracts": false, // true if we should show abstracts in search results
+   "showAbstracts": true, // true if we should show abstracts in search results
    "abstractLimit": 750, // Limit the number of characters in the abstract
    "showUserStoriesLink": true, // If false, do not display the user stories link for datasets
-   "showThumbnails": true, // If false, do not display dataset thumbnail images
-   "showBanner": false, // If false, the top banner will not be displayed
+   "showThumbnails": false, // If false, do not display dataset thumbnail images
+   "showBanner": true, // If false, the top banner will not be displayed
    "hideMapView": false, // true to hide the map view
    "facetVisibility": { // Facet visibility toggles
       "creator": true,
