@@ -37,8 +37,8 @@ if (typeof require !== 'undefined') {
 const PASTA_CONFIG = {
    // User configurable options --------------------------------------------------------------------------------
    "filter": '&fq=scope:knb-lter-pie', // Filter results on a unique keyword of a research group
-   "brandingText": "Seattle Public Utilities Data Catalog",
-   "logoAltText": "The City of Seattle Logo. The logo is a stylized, circular emblem featuring the profile of Chief Seattle (Si'ahl), the Duwamish and Suquamish leader for whom the city is named.", //
+   "brandingText": "PIE LTER Data Catalog",
+   "logoAltText": "PIE LTER Logo.", //
    "showAbstracts": true, // true if we should show abstracts in search results
    "abstractLimit": 750, // Limit the number of characters in the abstract
    "showUserStoriesLink": true, // If false, do not display the user stories link for datasets
