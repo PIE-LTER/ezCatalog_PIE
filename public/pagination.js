@@ -23,7 +23,8 @@ function makePageLink(currentUrl, currentStart, start, linkText) {
          tagStart = '<a class="active" href="';
       }
    }
-   var link = tagStart + uri + '">' + linkText + '</a>';
+   var safeUri = escapeAttributeUrl(uri);
+   var link = tagStart + safeUri + '">' + linkText + '</a>';
    return link;
 }
 
@@ -82,6 +83,14 @@ function escapeHtml(unsafe) {
 }
 
 
+function escapeAttributeUrl(url) {
+   // Encode the URL for safe use inside an HTML attribute value.
+   // encodeURI keeps valid URL characters but percent-encodes others;
+   // we additionally encode quotes to prevent breaking out of the attribute.
+   return encodeURI(url).replace(/"/g, "%22").replace(/'/g, "%27");
+}
+
+
 function showResultCount(query, total, limitPerPage, currentStartIndex, domElementId) {
    var element = document.getElementById(domElementId);
    if (total == 0 || !element) {
@@ -112,4 +121,12 @@ function showResultCount(query, total, limitPerPage, currentStartIndex, domEleme
       var showing = (". Showing results " + fromCount + " to " + toCount + ".</p>");
    }
    element.innerHTML = found + forQuery + showing;
+}
+
+if (typeof module !== "undefined" && module.exports) {
+   module.exports = {
+      updateQueryStringParameter,
+      showPageLinks,
+      showResultCount
+   };
 }
