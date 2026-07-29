@@ -59,7 +59,7 @@ const PASTA_CONFIG = {
    // Internal use only ---------------------------------------------------------------------------------------------
    "server": "https://pasta.lternet.edu/package/search/eml?", // PASTA server
    "countElementId": "resultCount", // Element showing number of results
-   "limit": 20,  // Max number of results to retrieve per page
+   "limit": 20000,  // Max number of results to retrieve per page
    "resultsElementId": "searchResults", // Element to contain results
    // Centralized element IDs
    "loadingDivId": "loading-div",
