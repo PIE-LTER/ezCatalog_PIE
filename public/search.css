@@ -23,7 +23,7 @@
   --dataset-title-link-visited: #4C2C92;
   --dataset-title-link-hover: underline;
   --dataset-author-color: #333333;
-  --banner-bar-background: #0046AD;
+  --banner-bar-background: #ffffff;
   --branding-text-font-weight: bold;
   --branding-text-color: #FFFFFF;
 }
@@ -61,7 +61,7 @@ body {
   height: 64px;
   background: var(--banner-bar-background);
   display: flex;
-  align-items: center;
+  align-items: left;
   padding: 0 24px;
   box-sizing: border-box;
       box-shadow: 0 2px 8px rgba(0,0,0,0.32); /* Shorter, darker shadow for all pages */
