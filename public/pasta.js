@@ -43,7 +43,7 @@ const PASTA_CONFIG = {
    "abstractLimit": 750, // Limit the number of characters in the abstract
    "showUserStoriesLink": true, // If false, do not display the user stories link for datasets
    "showThumbnails": false, // If false, do not display dataset thumbnail images
-   "showBanner": false, // If false, the top banner will not be displayed
+   "showBanner": true, // If false, the top banner will not be displayed
    "hideMapView": false, // true to hide the map view
    "pagesTopElementId": "paginationTop", // Element to display result page links above results
    "pagesBotElementId": "paginationBot", // Element to display result page links below results
