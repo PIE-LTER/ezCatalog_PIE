@@ -368,7 +368,7 @@ body {
 }
 .search-input {
   width: 250px;
-  margin-bottom: 10px;
+  margin-bottom: 0;
 }
 #creator {
   width: 100%;
@@ -626,7 +626,7 @@ body.no-banner .banner-bar {
 #search-bar-block {
   width: 100%;
   max-width: 256px;
-  margin: 0 auto 16px auto;
+  margin: 0 auto 0 auto;
   box-sizing: border-box;
 }
 
@@ -635,7 +635,7 @@ body.no-banner .banner-bar {
   align-items: center;
   border: 1.5px solid #c2c7d0;
   border-radius: var(--border-radius);
-  padding: 5px 10px;
+  padding: 5px 5px;
   background: #fff;
   transition: border-color var(--transition-speed);
 }
