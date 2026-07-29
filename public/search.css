@@ -208,7 +208,7 @@ body {
 .results {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2em;
+  gap: 1em;
 }
 
 .result-item {
@@ -254,7 +254,7 @@ body {
   color: var(--dataset-title-color);
   font-weight: var(--dataset-title-font-weight);
   font-size: var(--dataset-title-font-size);
-  margin-bottom: 8px;
+  margin-bottom: 0.5em;
 }
 .dataset-title a {
   font-size: 1em;
@@ -269,16 +269,16 @@ body {
 }
 .dataset-author {
   color: var(--dataset-author-color);
-  margin-bottom: 8px;
+  margin-bottom: 0.5em;
 }
 .dataset-abstract {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 0.5em;
 }
 .dataset-row {
   display: flex;
   align-items: center; /* Vertically center thumbnail and info */
-  margin-bottom: 10px;
+  margin-bottom: 1em;
 }
 .dataset-info {
   flex: 1;
@@ -626,7 +626,7 @@ body.no-banner .banner-bar {
 #search-bar-block {
   width: 100%;
   max-width: 256px;
-  margin: 16px auto 16px auto;
+  margin: 16px auto 0 auto;
   box-sizing: border-box;
 }
 
