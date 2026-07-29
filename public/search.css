@@ -124,7 +124,7 @@ body {
 
 .content {
   flex: 1 1 0;
-  padding: 16px 0 0 0;
+  padding: 0 0 0 0;
   min-width: 0;
   min-height: 0;
   background: #fff;
@@ -254,7 +254,7 @@ body {
   color: var(--dataset-title-color);
   font-weight: var(--dataset-title-font-weight);
   font-size: var(--dataset-title-font-size);
-  margin-bottom: 0.5em;
+  margin-bottom: 0;
 }
 .dataset-title a {
   font-size: 1em;
@@ -269,16 +269,16 @@ body {
 }
 .dataset-author {
   color: var(--dataset-author-color);
-  margin-bottom: 0.5em;
+  margin-bottom: 0;
 }
 .dataset-abstract {
   display: block;
-  margin-bottom: 0.5em;
+  margin-bottom: 0;
 }
 .dataset-row {
   display: flex;
   align-items: center; /* Vertically center thumbnail and info */
-  margin-bottom: 1em;
+  margin-bottom: 0;
 }
 .dataset-info {
   flex: 1;
