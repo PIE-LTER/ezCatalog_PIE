@@ -20,21 +20,21 @@
 
 <body>
    <div class="banner-bar">
-     <img src="images/logo.png" alt="" class="banner-logo" id="banner-logo-img" />
-     <span id="branding-text" class="branding-text"></span>
+    <!-- <img src="images/logo.png" alt="" class="banner-logo" id="banner-logo-img" />
+     <span id="branding-text" class="branding-text"></span> -->
+      <h2 class="filter-title">Search</h1>
+      <form id="dataSearchForm" name="dataSearchForm">
+         <!-- Plain text search bar -->
+         <div id="search-bar-block">
+            <div class="search-bar-inner">
+               <i class="fas fa-search" aria-hidden="true"></i>
+               <input type="search" id="main-search-input" placeholder="Search datasets..."
+                  aria-label="Search all datasets" />
+            </div>
+         </div>
    </div>
    <div class="main-layout">
      <aside class="sidebar" id="search-tab">
-        <h2 class="filter-title">Search</h1>
-        <form id="dataSearchForm" name="dataSearchForm">
-           <!-- Plain text search bar -->
-           <div id="search-bar-block">
-              <div class="search-bar-inner">
-                 <i class="fas fa-search" aria-hidden="true"></i>
-                 <input type="search" id="main-search-input" placeholder="Search datasets..."
-                    aria-label="Search all datasets" />
-              </div>
-           </div>
            <h2 class="filter-title">Filter</h1>
            <!-- Only new faceted search fields remain -->
               <div id="active-filters"></div>
