@@ -626,7 +626,7 @@ body.no-banner .banner-bar {
 #search-bar-block {
   width: 100%;
   max-width: 256px;
-  margin: 16px auto 0 auto;
+  margin: 0 auto 0 auto;
   box-sizing: border-box;
 }
 
