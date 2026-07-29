@@ -208,17 +208,17 @@ body {
 .results {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 0;
+  gap: 2em;
 }
 
 .result-item {
   background: var(--secondary-color);
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
-  padding: 0;
+  padding: 1.5em;
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: 1em;
 }
 
 .pagination {
