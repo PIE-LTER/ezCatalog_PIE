@@ -208,14 +208,14 @@ body {
 .results {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2em;
+  gap: 1em;
 }
 
 .result-item {
   background: var(--secondary-color);
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
-  padding: 1.5em;
+  padding: 1em;
   display: flex;
   flex-direction: column;
   gap: 1em;
