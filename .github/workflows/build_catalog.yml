@@ -8,6 +8,9 @@ permissions:
 on:
   workflow_dispatch:
 
+env:
+  EDI_API_ACCESS_KEY: ${{ secrets.EDI_API_ACCESS_KEY }}
+  
 jobs:
   build:
     runs-on: ubuntu-latest
