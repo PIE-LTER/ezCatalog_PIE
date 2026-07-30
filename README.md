@@ -2,9 +2,9 @@
 
 A customizable data catalog for users of the EDI Data Repository
 
-[Live demo](https://rmcnellis.github.io/ezCatalog_PIE/public/demo.html)
+[Live demo](https://EDIorg.github.io/ezCatalog/public/demo.html)
 
-_ezCatalog is based on the [PASTA-JavaScript-Search-Client](https://github.com/BLE-LTER/PASTA-JavaScript-Search-Client) developed by Tim Whiteaker for the Long-Term Ecological Research Network (LTER)._
+_ezCatalog is inspired by the [PASTA-JavaScript-Search-Client](https://github.com/BLE-LTER/PASTA-JavaScript-Search-Client) developed by Tim Whiteaker for the Long-Term Ecological Research Network (LTER)._
 
 ## Motivation
 
@@ -12,32 +12,68 @@ Researchers and organizations publishing data in the [EDI Repository](https://po
 
 ## Usage for Your Site
 
-1. Fork this GitHub repository. 
-2. Initialize GitHub Pages for your fork. Go to **Settings > Pages** and select **Source** to be `/root` of the main branch.
-3. Construct a filter query to identify your data in the EDI Repository and to be listed in your catalog using one of the following options:
-   - **Unique Keyword**  - A unique keyword identifying your research group and published in the metadata of each of your EDI data packages can be used as a filter. For example, the research lab of Cayelan Carey publishes data with the keyword "Carey Lab" and the filter query `'&fq=keyword:"Carey Lab"'` returns all their data.
+1. **Fork** this GitHub repository to your own account.
+2. **Create a custom branch:** Locally or on GitHub, create a new branch (e.g., `research-site`) from the `main` branch. **Do all your configuration and deployment on this branch.** This keeps your `main` branch clean, allowing you to easily pull in future updates from the original ezCatalog repo without overwriting your work.
+3. Once the repository is forked, go to **Actions** and enable GitHub Actions for your repository. This is a security requirement imposed by GitHub on forked repositories that include GitHub Action workflows.
+4. **Initialize GitHub Pages** for your fork. Go to **Settings > Pages** and select **Source** to be "Deploy from a branch" and **Branch** to be your custom branch (e.g., `research-site`) and the `/root` folder.
+5. Construct a filter query to identify your data in the EDI Repository and to be listed in your catalog using one of the following options:
+   - **Unique Keyword** - A unique keyword identifying your research group and published in the metadata of each of your EDI data packages can be used as a filter. For example, the research lab of Cayelan Carey publishes data with the keyword "Carey Lab" and the filter query `'&fq=keyword:"Carey Lab"'` returns all their data.
    - **Data Package Identifiers** - A list of data package identifiers in the form _id:scope.identifier_. For example, `'&q=id:edi.23+id:edi.101+id:edi.845'`returns the newest versions of data packages: `edi.23`, `edi.101`, and `edi.845`.
-   - **Scope** - For LTER only. The scope identifying your LTER site. For example, `'&fq=scope:knb-lter-cap'` returns all data of the Central Arizona-Phoenix LTER. 
-4. Add the filter query to `config.txt` and commit the changes.
-5. Enable GitHub Actions to build your catalog with the [build_catalog](https://github.com/rmcnellis/ezCatalog/blob/master/.github/workflows/build_catalog.yml) workflow. Go to **Actions** and enable. Under **Workflows** select **Build catalog**, then **Run workflow**. Wait for the workflow to complete, then click the **Live demo** page to see your catalog (it may take a few minutes to update). Subsequent pushes to your fork will automatically rerun the `build_catalog` workflow.  
-6. Copy the HTML snippet below and paste it into the body of your webpage. This will reference the catalog hosted on GitHub Pages from within your website.
+   - **Scope** - For LTER only. The scope identifying your LTER site. For example, `'&fq=scope:knb-lter-cap'` returns all data of the Central Arizona-Phoenix LTER.
+
+   Add the filter query directly to `/public/pasta.js` by editing the `filter` property in the `PASTA_CONFIG` object. For example:
+
+   ```javascript
+   const PASTA_CONFIG = {
+      "filter": '&fq=keyword:"Carey Lab"', // Replace with your filter query
+      ...
+   };
+   ```
+
+6. **Configure your EDI API Access Key (Mandatory starting Thursday, July 30, 2026)**:
+   All unauthenticated REST API requests to `pasta.lternet.edu` will fail after this date. To ensure your catalog searches and images continue loading properly:
+   - **Obtain an API Key**: Learn about and obtain an API Access Key by following the instructions at [Working with API Access Keys](https://edirepository.org/resources/iam#working-with-api-access-keys).
+   - **Set the Key**: Open `/public/pasta.js` and edit the `"apiKey"` property inside the `PASTA_CONFIG` object with your key:
+
+     ```javascript
+     const PASTA_CONFIG = {
+        "apiKey": "YOUR_EDI_API_ACCESS_KEY", // Replace with your actual EDI API Access Key
+        "filter": '&fq=scope:cos-spu',
+        ...
+     };
+     ```
+
+7. Review the additional configuration options in the `PASTA_CONFIG` block near the top of `/public/pasta.js` (for example `showBanner`, `hideMapView`, `facetVisibility`, `showAbstracts`, and `abstractLimit`).
+8. Use GitHub **Actions** to build your catalog with the [build_catalog](https://github.com/EDIorg/ezCatalog/blob/master/.github/workflows/build_catalog.yml) workflow. Go to **Actions** and under **Workflows** select **Build catalog**, select the branch to run it on (this should be your custom branch), then **Run workflow**. Wait for the workflow to complete, then click the **Live demo** page to see your catalog (it may take a few minutes to update). Subsequent pushes to your fork will automatically rerun the `build_catalog` workflow.  
+9. Copy the HTML snippet below and paste it into the body of your webpage.
+
 ```
-<iframe loading="lazy" src="https://PIE-LTER.github.io/ezCatalog_PIE/public/demo.html" scrolling="no" allow="fullscreen" width="100%" height="2700px"></iframe>
+
+<iframe loading="lazy" src="https://EDIorg.github.io/ezCatalog/public/demo.html" scrolling="no" allow="fullscreen" width="100%" height="2700px"></iframe>
+
 ```
 
-View the page source code of the [Jornada Basin LTER Data Catalog](https://lter.jornada.nmsu.edu/data-catalog/) for an example of embedding an <iframe> in a webpage or experiment using the W3Schools [HTML Tryit editor](https://www.w3schools.com/html/tryit.asp?filename=tryhtml_intro).
+### build_catalog workflow details
 
-## Features
+#### What the build does
+Runs `main.py` to update `public/pasta.js` and this README based on your `PASTA_CONFIG` settings, then commits those changes to your branch.
 
-### Autocomplete
+#### Expected outputs
+- A new commit on your custom branch that updates `public/pasta.js` and `README.md`.
+- The GitHub Pages site refreshes to reflect the updated catalog once the workflow completes.
 
-Autocomplete is currently supported for the creator and taxonomy input fields. Try typing a couple of characters into the creator box of the demo page and see what happens.
+#### How to validate
+- Confirm the **Build catalog** workflow run completed successfully in GitHub Actions.
+- Open the live catalog page and verify the data and facets match your configuration.
 
-Autocomplete requires creating a list of possible choices, which is automatically generated each time the GitHub Actions workflow `build_catalog` runs.
+### Keeping Your Catalog Updated
 
-### Pagination
+To pull in the latest features or fixes from the main ezCatalog repository:
 
-ezCatalog allows you to limit the number of results returned per page. If you do not wish to use pagination, set the `limit` parameter in `config.txt` to a number higher than the number of datasets available for your group.
+1.  Sync your fork's `main` branch with the `upstream` repository.
+2.  Merge the updated `main` branch into your `research-site` branch.
+
+To see an example of how to embed the catalog in a web page `<iframe>`, view the page source code of the [Jornada Basin LTER Data Catalog](https://lter.jornada.nmsu.edu/data-catalog/) or experiment using the W3Schools [HTML Tryit editor](https://www.w3schools.com/html/tryit.asp?filename=tryhtml_intro).
 
 ## Caveats
 
@@ -48,12 +84,30 @@ The success of search queries depends upon the metadata provided when submitting
 Please contact support@edirepository.org for help setting up your catalog or resolving issues.
 
 ## Scope
-   
+
 ezCatalog is a basic data catalog. If interested in developing a more feature rich catalog, we recommend checking out the video on [Using the PASTA+ Search API to Create a Local Data Catalog](https://www.youtube.com/watch?v=LwCI9TKi-Pg&t=361s).
-   
-## Acknowledgments
 
-CSV export uses uselesscode's JS CSV serializer (MIT Licensed):
-http://www.uselesscode.org/javascript/csv/
+## Running Unit Tests
 
-We use Pixabay's autocomplete plugin. Thanks Pixabay!
+This project uses [Jest](https://jestjs.io/) for unit testing JavaScript code.
+
+To run all tests:
+
+
+```
+
+npm test
+
+```
+
+To run tests with real PASTA API requests:
+
+```
+
+RUN_REAL_REQUESTS=true npm test
+
+```
+
+Test files should be named with `.test.js` and placed alongside the code they test (e.g., `public/sample.test.js`).
+
+For more information, see the [Jest documentation](https://jestjs.io/docs/getting-started).
