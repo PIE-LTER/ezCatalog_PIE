@@ -7,16 +7,15 @@ permissions:
 
 on:
   workflow_dispatch:
-
-env:
-  EDI_API_ACCESS_KEY: ${{ secrets.EDI_API_ACCESS_KEY }}
   
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      EDI_API_ACCESS_KEY: ${{ secrets.EDI_API_ACCESS_KEY }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
       # Uses Python to construct the query and parameterize JavaScripts
