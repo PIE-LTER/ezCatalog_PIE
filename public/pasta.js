@@ -36,7 +36,7 @@ if (typeof require !== 'undefined') {
 
 const PASTA_CONFIG = {
    // User configurable options --------------------------------------------------------------------------------
-   "apiKey": ${{ secrets.EDI_API_ACCESS_KEY }}, // EDI API Access Key for authenticated requests to pasta.lternet.edu
+   "apiKey": "dPWUG8KiyOiX9IDBMAA5eMQ0t2Y", // EDI API Access Key for authenticated requests to pasta.lternet.edu
    "filter": '&fq=scope:cos-spu', // Filter results on a unique keyword of a research group
    "brandingText": "Seattle Public Utilities Data Catalog",
    "logoAltText": "The City of Seattle Logo. The logo is a stylized, circular emblem featuring the profile of Chief Seattle (Si'ahl), the Duwamish and Suquamish leader for whom the city is named.", //
