@@ -44,12 +44,12 @@ const PASTA_CONFIG = {
    "abstractLimit": 750, // Limit the number of characters in the abstract
    "showUserStoriesLink": true, // If false, do not display the user stories link for datasets
    "showThumbnails": true, // If false, do not display dataset thumbnail images
-   "showBanner": true, // If false, the top banner will not be displayed
+   "showBanner": false, // If false, the top banner will not be displayed
    "hideMapView": false, // true to hide the map view
    "facetVisibility": { // Facet visibility toggles
       "creator": true,
       "keyword": true,
-      "project": true,
+      "project": false,
       "location": true,  // Must be true to enable location-based map filtering
       "taxon": true,
       "commonName": true
