@@ -1,0 +1,2 @@
+filter = '&fq=scope:knb-lter-pie' 
+limit = 20
