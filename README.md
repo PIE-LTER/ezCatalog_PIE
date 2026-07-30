@@ -2,7 +2,7 @@
 
 A customizable data catalog for users of the EDI Data Repository
 
-[Live demo](https://PIE-LTER.github.io/ezCatalog_PIE/public/demo.html)
+[Live demo](https://EDIorg.github.io/ezCatalog/public/demo.html)
 
 _ezCatalog is inspired by the [PASTA-JavaScript-Search-Client](https://github.com/BLE-LTER/PASTA-JavaScript-Search-Client) developed by Tim Whiteaker for the Long-Term Ecological Research Network (LTER)._
 
@@ -30,13 +30,26 @@ Researchers and organizations publishing data in the [EDI Repository](https://po
    };
    ```
 
-6. Review the additional configuration options in the `PASTA_CONFIG` block near the top of `/public/pasta.js` (for example `showBanner`, `hideMapView`, `facetVisibility`, `showAbstracts`, and `abstractLimit`).
-7. Use GitHub **Actions** to build your catalog with the [build_catalog](https://github.com/PIE-LTER/ezCatalog_PIE/blob/master/.github/workflows/build_catalog.yml) workflow. Go to **Actions** and under **Workflows** select **Build catalog**, select the branch to run it on (this should be your custom branch), then **Run workflow**. Wait for the workflow to complete, then click the **Live demo** page to see your catalog (it may take a few minutes to update). Subsequent pushes to your fork will automatically rerun the `build_catalog` workflow.  
-8. Copy the HTML snippet below and paste it into the body of your webpage.
+6. **Configure your EDI API Access Key (Mandatory starting Thursday, July 30, 2026)**:
+   All unauthenticated REST API requests to `pasta.lternet.edu` will fail after this date. To ensure your catalog searches and images continue loading properly:
+   - **Obtain an API Key**: Learn about and obtain an API Access Key by following the instructions at [Working with API Access Keys](https://edirepository.org/resources/iam#working-with-api-access-keys).
+   - **Set the Key**: Open `/public/pasta.js` and edit the `"apiKey"` property inside the `PASTA_CONFIG` object with your key:
+
+     ```javascript
+     const PASTA_CONFIG = {
+        "apiKey": "YOUR_EDI_API_ACCESS_KEY", // Replace with your actual EDI API Access Key
+        "filter": '&fq=scope:cos-spu',
+        ...
+     };
+     ```
+
+7. Review the additional configuration options in the `PASTA_CONFIG` block near the top of `/public/pasta.js` (for example `showBanner`, `hideMapView`, `facetVisibility`, `showAbstracts`, and `abstractLimit`).
+8. Use GitHub **Actions** to build your catalog with the [build_catalog](https://github.com/EDIorg/ezCatalog/blob/master/.github/workflows/build_catalog.yml) workflow. Go to **Actions** and under **Workflows** select **Build catalog**, select the branch to run it on (this should be your custom branch), then **Run workflow**. Wait for the workflow to complete, then click the **Live demo** page to see your catalog (it may take a few minutes to update). Subsequent pushes to your fork will automatically rerun the `build_catalog` workflow.  
+9. Copy the HTML snippet below and paste it into the body of your webpage.
 
 ```
 
-<iframe loading="lazy" src="https://PIE-LTER.github.io/ezCatalog_PIE/public/demo.html" scrolling="no" allow="fullscreen" width="100%" height="2700px"></iframe>
+<iframe loading="lazy" src="https://EDIorg.github.io/ezCatalog/public/demo.html" scrolling="no" allow="fullscreen" width="100%" height="2700px"></iframe>
 
 ```
 

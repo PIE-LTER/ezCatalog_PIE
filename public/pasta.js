@@ -36,22 +36,20 @@ if (typeof require !== 'undefined') {
 
 const PASTA_CONFIG = {
    // User configurable options --------------------------------------------------------------------------------
-   "filter": '&fq=scope:knb-lter-pie', // Filter results on a unique keyword of a research group
-   "brandingText": "PIE LTER Data Catalog",
-   "logoAltText": "PIE LTER Logo.", //
-   "showAbstracts": false, // true if we should show abstracts in search results
+   "apiKey": "", // EDI API Access Key for authenticated requests to pasta.lternet.edu
+   "filter": '&fq=scope:cos-spu', // Filter results on a unique keyword of a research group
+   "brandingText": "Seattle Public Utilities Data Catalog",
+   "logoAltText": "The City of Seattle Logo. The logo is a stylized, circular emblem featuring the profile of Chief Seattle (Si'ahl), the Duwamish and Suquamish leader for whom the city is named.", //
+   "showAbstracts": true, // true if we should show abstracts in search results
    "abstractLimit": 750, // Limit the number of characters in the abstract
    "showUserStoriesLink": true, // If false, do not display the user stories link for datasets
-   "showThumbnails": false, // If false, do not display dataset thumbnail images
-   "showBanner": false, // If false, the top banner will not be displayed
+   "showThumbnails": true, // If false, do not display dataset thumbnail images
+   "showBanner": true, // If false, the top banner will not be displayed
    "hideMapView": false, // true to hide the map view
-   "pagesTopElementId": "paginationTop", // Element to display result page links above results
-   "pagesBotElementId": "paginationBot", // Element to display result page links below results
-   "showPages": 5, // MUST BE ODD NUMBER! Max number of page links to show
    "facetVisibility": { // Facet visibility toggles
       "creator": true,
       "keyword": true,
-      "project": false,
+      "project": true,
       "location": true,  // Must be true to enable location-based map filtering
       "taxon": true,
       "commonName": true
@@ -59,7 +57,7 @@ const PASTA_CONFIG = {
    // Internal use only ---------------------------------------------------------------------------------------------
    "server": "https://pasta.lternet.edu/package/search/eml?", // PASTA server
    "countElementId": "resultCount", // Element showing number of results
-   "limit": 20000,  // Max number of results to retrieve per page
+   "limit": 2000,  // Max number of results to retrieve per page
    "resultsElementId": "searchResults", // Element to contain results
    // Centralized element IDs
    "loadingDivId": "loading-div",
@@ -79,6 +77,10 @@ const PASTA_CONFIG = {
    "baseDelay": 200 // ms
    // ----------------------------------------------------------------------------------------------------------------
 };
+
+if (typeof module !== 'undefined' && module.exports) {
+  global.PASTA_CONFIG = PASTA_CONFIG;
+}
 
 const PASTA_STATE = {
    relatedStories: [],
@@ -114,16 +116,16 @@ function titleHtml(title) {
 }
 function imgHtml(pkgid) {
    if (!PASTA_CONFIG.showThumbnails) return "";
-   const imgSrc = window.getThumbnailUrl ? window.getThumbnailUrl(pkgid) : '';
+   const imgSrc = window.getThumbnailUrl ? window.getThumbnailUrl(pkgid, PASTA_CONFIG.apiKey) : '';
    const safeImgSrc = escapeHtml(imgSrc);
    const encodedImgSrc = encodeURIComponent(imgSrc || '');
    // Add click handler to enlarge image
    return `<div class='dataset-thumb-container'><img class='dataset-thumb' src='${safeImgSrc}' alt='' onerror="this.style.display='none';this.parentNode.classList.add('no-image');" onclick="enlargeThumbnail(decodeURIComponent('${encodedImgSrc}'))"></div>`;
 }
 function exploreLink(link, title) {
-   const safeLink = escapeHtml(link);
+   const b64Link = typeof btoa !== 'undefined' ? btoa(link) : Buffer.from(link).toString('base64');
    const safeTitle = escapeHtml(title);
-   return `<a class='explore-link' href='${safeLink}' target='_blank' rel='noopener noreferrer' aria-label='Explore data package: ${safeTitle} in the Environmental Data Initiative repository'>Explore Data <i class='fas fa-external-link-alt' style='margin-left:6px;font-size:0.98em;vertical-align:middle;'></i></a>`;
+   return `<a class='explore-link' role='button' tabindex='0' onclick="window.open(atob('${b64Link}'), '_blank', 'noopener,noreferrer')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();window.open(atob('${b64Link}'), '_blank', 'noopener,noreferrer')}" aria-label="Explore data package: ${safeTitle} in the Environmental Data Initiative repository" style="cursor: pointer;">Explore Data <i class='fas fa-external-link-alt' style='margin-left:6px;font-size:0.98em;vertical-align:middle;'></i></a>`;
 }
 function relatedStoriesLink(pkgid, title) {
    if (!PASTA_CONFIG.showUserStoriesLink) return "";
@@ -931,7 +933,8 @@ function initDropdown(toggleId, dropdownId, arrowId) {
 async function fetchPackageIds() {
   const scope = PASTA_CONFIG.scope || 'edi';
   const filter = PASTA_CONFIG.filter || '';
-  return await fetchDataPackageIdentifiers(scope, filter);
+  const apiKey = PASTA_CONFIG.apiKey || '';
+  return await fetchDataPackageIdentifiers(scope, filter, apiKey);
 }
 
 async function buildAndPostRidarePayload(pids) {
@@ -1077,6 +1080,7 @@ if (typeof module !== 'undefined' && module.exports) {
         buildHtml,
         renderFacetDropdown,
         handleSuccess,
+        exploreLink,
         pastaState: PASTA_STATE
     };
 }
