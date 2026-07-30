@@ -73,7 +73,7 @@ const PASTA_CONFIG = {
    "brandingTextId": "branding-text",
    // Centralized URLs
    "imgBasePath": "images/",
-   "portalBaseUrl": "https://portal.edirepository.org/nis/mapbrowse?key=TOpWLneMxC7tMUgkQaGW_mjQgCM&packageid=",
+   "portalBaseUrl": "https://portal.edirepository.org/nis/mapbrowse?packageid=",
    "citeBaseUrl": "https://cite.edirepository.org/cite/",
    // Delays
    "baseDelay": 200 // ms
